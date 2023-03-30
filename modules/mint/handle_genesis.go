@@ -14,11 +14,12 @@ import (
 
 // HandleGenesis implements modules.Module
 func (m *Module) HandleGenesis(doc *tmtypes.GenesisDoc, appState map[string]json.RawMessage) error {
-	log.Debug().Str("module", "mint").Msg("parsing genesis")
+	log.Debug().Str("module", "prcmint").Msg("parsing genesis")
 
+	mintModule := "prcmint"
 	// Read the genesis state
 	var genState minttypes.GenesisState
-	err := m.cdc.UnmarshalJSON(appState[minttypes.ModuleName], &genState)
+	err := m.cdc.UnmarshalJSON(appState[mintModule], &genState)
 	if err != nil {
 		return fmt.Errorf("error while reading mint genesis data: %s", err)
 	}

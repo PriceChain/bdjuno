@@ -9,7 +9,7 @@ import (
 
 // RegisterPeriodicOperations implements modules.PeriodicOperationsModule
 func (m *Module) RegisterPeriodicOperations(scheduler *gocron.Scheduler) error {
-	log.Debug().Str("module", "mint").Msg("setting up periodic tasks")
+	log.Debug().Str("module", "prcmint").Msg("setting up periodic tasks")
 
 	// Setup a cron job to run every midnight
 	if _, err := scheduler.Every(1).Day().At("00:00").Do(func() {
@@ -25,7 +25,7 @@ func (m *Module) RegisterPeriodicOperations(scheduler *gocron.Scheduler) error {
 // inflation, and saves it inside the database.
 func (m *Module) UpdateInflation() error {
 	log.Debug().
-		Str("module", "mint").
+		Str("module", "prcmint").
 		Str("operation", "inflation").
 		Msg("getting inflation data")
 
